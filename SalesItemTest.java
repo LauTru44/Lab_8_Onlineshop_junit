@@ -9,6 +9,9 @@ import org.junit.Test;
  * @author  mik
  * @version 0.1
  */
+/*
+ * 17) options: show source
+ */
 public class SalesItemTest
 {
     /**
@@ -48,7 +51,16 @@ public class SalesItemTest
         assertEquals(true, salesIte1.addComment("James Duckling", "This book is great. I perform brain surgery every week now.", 4));
         assertEquals(1, salesIte1.getNumberOfComments());
     }
-
+    
+     @Test
+        public void testAddCommentSameAuthor() //Ex 15
+    {
+        SalesItem salesIte1 = new SalesItem("Brain surgery for Dummies", 21998);
+        assertEquals(true, salesIte1.addComment("James Duckling", "This book is great. I perform brain surgery every week now.", 4));
+         assertEquals(false, salesIte1.addComment("James Duckling", "don't matter", 1));
+        assertEquals(1, salesIte1.getNumberOfComments());
+    }
+    
     /**
      * Test that a comment using an illegal rating value is rejected.
      */
@@ -57,6 +69,13 @@ public class SalesItemTest
     {
         SalesItem salesIte1 = new SalesItem("Java For Complete Idiots, Vol 2", 19900);
         assertEquals(false, salesIte1.addComment("Joshua Black", "Not worth the money. The font is too small.", -5));
+    }
+    
+        @Test
+    public void testNegativeRating()
+    {
+        SalesItem salesIte1 = new SalesItem("Java For Complete Idiots, Vol 2",10);
+        assertEquals(false, salesIte1.addComment("Joshua Black", "Not worth the money. The font is too small.", 0));
     }
 
     /**
