@@ -115,11 +115,13 @@ public class SalesItem
         System.out.println("Price: " + priceString(price));
         System.out.println();
         System.out.println("Customer comments:");
-        for(Comment comment : comments) {
-            System.out.println("-------------------------------------------");
-            System.out.println(comment.getFullDetails());
+        int i=0;
+        while(comments.size()>i){
+             System.out.println("-------------------------------------------");
+            System.out.println(comments.get(i).getFullDetails()); 
+            i++;
         }
-        System.out.println();
+            System.out.println();
         System.out.println("===========================================");
     }
     
@@ -161,6 +163,11 @@ public class SalesItem
             if(comment.getAuthor().equals(author)) {
                 return comment;
             }
+        }
+        int i=0;
+        boolean notFound=false;
+        while(notFound){
+            
         }
         return null;
     }

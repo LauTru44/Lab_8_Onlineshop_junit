@@ -40,9 +40,28 @@ public class CommentTest
     {
     }
     
-    @Test
+    //Exercise 18
+    @Test 
     public void storeCorrectly(){
       Comment comment1 = new Comment("Laura","comment",3);  
     }
  
+    //Exercise 18
+    @Test
+    public void upvote()
+    {
+        Comment comment1 = new Comment("laura", "yes", 3);
+        comment1.upvote();
+    }
+    
+    //Exercise 18
+    @Test
+    public void downvote()
+    {
+        Comment comment1 = new Comment("laura", "yes", 4);
+        comment1.downvote();
+    }
 }
+
+
+
