@@ -115,6 +115,7 @@ public class SalesItem
         System.out.println("Price: " + priceString(price));
         System.out.println();
         System.out.println("Customer comments:");
+        //Exercise 21
         int i=0;
         while(comments.size()>i){
              System.out.println("-------------------------------------------");
@@ -131,16 +132,23 @@ public class SalesItem
      * them.
      */
     public Comment findMostHelpfulComment()
-    {
-        Iterator<Comment> it = comments.iterator();
-        Comment best = it.next();
-        while(it.hasNext()) {
-            Comment current = it.next();
-            if(current.getVoteCount() > best.getVoteCount()) {
-                best = current;
-            }
+    {    
+        if (comments.isEmpty()) {
+        return null; //Returns "null" instead of crashing
         }
-        return best;
+    //Exercise 21    
+    Comment best = comments.get(0); 
+    int index = 1; 
+
+        while (index < comments.size()) { 
+            Comment current = comments.get(index); 
+                if (current.getVoteCount() > best.getVoteCount()) {
+                best = current; 
+            }
+            index++;
+        }
+
+        return best; //Return the most helpful comment    
     }
     
     /**
@@ -157,18 +165,17 @@ public class SalesItem
      * 
      * @return The comment if it exists; null if it doesn't.
      */
-    private Comment findCommentByAuthor(String author)
-    {
-        for(Comment comment : comments) {
-            if(comment.getAuthor().equals(author)) {
-                return comment;
-            }
-        }
+    public Comment findCommentByAuthor(String author)
+    {//Exercise 21
         int i=0;
         boolean notFound=false;
-        while(notFound){
-            
-        }
+            while(i < comments.size()){
+                  Comment comment = comments.get(i);
+                if (comment.getAuthor().equals(author)) {
+                return comment; 
+                }
+                i++; 
+            }
         return null;
     }
     

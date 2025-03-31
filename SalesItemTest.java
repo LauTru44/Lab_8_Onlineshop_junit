@@ -143,7 +143,18 @@ public class SalesItemTest
         salesIte1.showInfo();
         assertEquals(2, salesIte1.getNumberOfComments());
     }
+
+    @Test //exercise 20
+    public void noCommentsAvailable()
+    {
+        SalesItem salesIte2 = new SalesItem("toy", 10);
+        assertNull(salesIte2.findCommentByAuthor("laura"));
+        assertNull(salesIte2.findMostHelpfulComment());
+    }
 }
+
+
+
 
 
 
